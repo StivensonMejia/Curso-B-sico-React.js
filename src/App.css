@@ -1,38 +1,137 @@
-.App {
-  text-align: center;
+:root {
+  --black-background: #141414;
+  --white: #fefefe;
+  --red: #bd2929;
+  --gray: rgb(167, 167, 167);
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #233553;
-  min-height: 100vh;
+section {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
+  height: 100vh;
+  .todoCreateContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    background-color:  var(--black-background);
+    button {
+      width: 250px;
+      height: 80px;
+      border: none;
+      background-color: var(--white);
+      margin-top: 50px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      color: var(--black-background);
+    }
+  }
+  .todoContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+    .todoTitle{
+      font-size: 4rem;
+      text-align: center;
+    }
+    .todoCounter {
+      font-size: 1.5rem;
+      text-align: center;
+      line-height: 5px;
+    }
+    .todoSearchBar {
+      width: 500px;
+      height: 50px;
+      border-radius: 12px;
+      padding: 0 20px;
+      border: none;
+      background-color: var(--white);
+      margin: 50px 0;
+      transition: .2s linear;
+      outline: solid 2px var(--gray);
+      &:focus {
+        width: 600px;
+        background-color: var(--white);
+        outline: solid 2px var(--black-background);
+      }
+    }
+    .todoItemContainer {
+      width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: var(--black-background);
+      gap: 20px;
+      padding: 100px 20px;
+      border-radius: 12px;
+      .todoItem {
+        position: relative;
+        width: 80%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        .todoItem-cotendContainer {
+          width: 80%;
+          height: 100%;
+          max-width: 450px;
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          border-radius: 12px;
+          background-color: var(--white);
+          .todoItem-checked {
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-left: 15px;
+            border: solid 2px var(--gray);
+            color: var(--gray);
+          }
+          .todoItem-checked_true {
+            color: var(--red);
+            border: solid 2px var(--red)
+          }
+          .todoItem-text {
+    
+          }
+          .todoItem-text_completed {
+            text-decoration: line-through;
+          }
+        }
+        .todoItem-closeContainer {
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: var(--white);
+          border-radius: 12px;
+          color: var(--gray);
+          &:hover {
+            background-color: var(--red);
+            color: var(--white);
+            cursor: pointer;
+          }
+          .todoItem-close {
+            font-size: 25px;
+            padding-bottom: 8px;
+          }
+        }
+        
+      }
+    }
+  }
 }
 
-.App-link {
-  color: #97ca3f;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
