@@ -6,8 +6,13 @@ import {TodoCounter} from '../Components/TodoCounter';
 import {TodoSearch} from '../Components/TodoSearch';
 import {TodoItem} from '../Components/TodoItem';
 import {TodoList} from '../Components/TodoList';
+import {TodosLoading} from "../Components/TodosLoading";
+import {TodosError} from "../Components/TodosError";
+import {TodosEmpty} from "../Components/TodosEmpty";
 
 function AppUI({
+    loading,
+    error,
     completedTodos,
     totalTodos,
     searchValue,
@@ -35,6 +40,10 @@ function AppUI({
               />
     
               <TodoList>
+                {loading && <TodosLoading />}
+                {error && <TodosError />}
+                {(!loading && searchTodos.length == 0) && <TodosEmpty />}
+
                 {searchTodos.map( todo => (
                   <TodoItem 
                     key={todo.text} 

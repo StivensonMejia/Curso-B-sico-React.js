@@ -63,6 +63,7 @@ section {
     }
     .todoItemContainer {
       width: 600px;
+      height: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -70,8 +71,8 @@ section {
       gap: 20px;
       padding: 100px 20px;
       border-radius: 12px;
-      transition: linear .3s;
       .todoItem {
+        opacity: 0%;
         position: relative;
         width: 80%;
         height: 60px;
@@ -79,6 +80,7 @@ section {
         align-items: center;
         justify-content: center;
         gap: 20px;
+        animation: reveal 1s ease both;
         .todoItem-cotendContainer {
           width: 80%;
           height: 100%;
@@ -96,8 +98,9 @@ section {
               cursor: pointer;
             }
             .todoItem-svg {
+              padding-top: 5px;
               width: 20px;
-              height: 20px;
+              height: 25px;
               &:hover {
                 fill: var(--green);
               }
@@ -120,9 +123,11 @@ section {
           color: var(--gray);
           border-radius: 12px;
           overflow: hidden;
+          transition: ease-in .1s;
           &:hover {
             background-color: var(--red);
             cursor: pointer;
+            transform: scale(1.2);
           }
           .todoItem-delete {
             width: auto;
@@ -142,16 +147,90 @@ section {
         }
         
       }
+      .todoError-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .todoItem-svg {
+          width: 80px;
+          height: 80px;
+        }
+        .todoError-text {
+          color: var(--white);
+          font-size: 1.5rem;
+        }
+      }
+      .todosEmpty {
+        color: var(--white);
+        font-size: 1.5rem;
+      }
     }
   }
 }
 
 
-@keyframes frame {
-  0% {
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  div {
+    position: absolute;
+    border: 4px solid #fff;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  }
+  div:nth-child(2) {
+    animation-delay: -0.5s;
+  }
+}
 
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
   }
   100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
 
+@keyframes reveal {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes ok {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: auto;
   }
 }

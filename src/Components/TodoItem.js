@@ -6,10 +6,6 @@ function TodoItem({text,completed,onComplete,onDelete}) {
   return (
     <li className='todoItem'>
       <div className='todoItem-cotendContainer'>
-        {/* <span 
-          className={`todoItem-checked ${completed && "todoItem-checked_true"}`}
-          onClick={onComplete}
-        >v</span> */}
         <CheckIcon 
           completed={completed}
           onComplete={onComplete}
@@ -20,10 +16,6 @@ function TodoItem({text,completed,onComplete,onDelete}) {
         <DeleteIcon 
           onDelete={onDelete}
         />
-        {/* <span 
-          className='todoItem-close'
-          onClick={onDelete}
-        >x</span> */}
       </div>
     </li>
   )
