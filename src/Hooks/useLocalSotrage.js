@@ -43,3 +43,15 @@ function useLocalSotrage(itemName, initialValue,) {
 }
 
 export {useLocalSotrage};
+
+
+/* const defaultTodos = [
+  { text: 'Terminar el css de la app', completed: true },
+  { text: 'Ser maestro pokemon', completed: true },
+  { text: 'Completar el curso no node.js', completed: false },
+  { text: 'Conseguir trabajo como DEV', completed: false },
+]
+localStorage.setItem('TODOS_V1',JSON.stringify(defaultTodos)); */
+
+/* localStorage.removeItem('TODOS_V1'); */
+/* const stringifidedTodos = JSON.stringify(defaultTodos) */

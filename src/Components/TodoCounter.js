@@ -1,6 +1,12 @@
 import React from "react";
+import { TodoContext } from "../App/Context";
 
-function TodoCounter({ completed, total }) {
+function TodoCounter() {
+    const { 
+        completedTodos : completed,
+        totalTodos : total,
+    } = React.useContext(TodoContext);
+
     let counterMessage = "";
     if (total == 0) {
         counterMessage = "You don't have to-dos";
@@ -9,6 +15,7 @@ function TodoCounter({ completed, total }) {
     } else {
         counterMessage = `Completed ${completed} of ${total}.`
     }
+
     return (
         <p className='todoCounter'>
             {counterMessage}

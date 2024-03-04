@@ -8,8 +8,9 @@
 
 section {
   display: flex;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
+  overflow: hidden;
   .todoCreateContainer {
     display: flex;
     flex-direction: column;
@@ -17,15 +18,15 @@ section {
     justify-content: center;
     width: 50%;
     height: 100%;
-    background-color:  var(--black-background);
+    background-color: var(--black-background);
     button {
-      width: 250px;
+      width: 80px;
       height: 80px;
       border: none;
       background-color: var(--white);
       margin-top: 50px;
       border-radius: 12px;
-      font-size: 1.2rem;
+      font-size: 2rem;
       color: var(--black-background);
     }
   }
@@ -33,10 +34,11 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 50%;
-    height: 100%;
+    max-height: 100%;
+    overflow-y: auto;
     .todoTitle{
+      margin-top: 50px;
       font-size: 4rem;
       text-align: center;
     }
@@ -49,7 +51,7 @@ section {
       width: 500px;
       height: 50px;
       border-radius: 12px;
-      padding: 0 20px;
+      padding: 20px 20px;
       border: none;
       background-color: var(--white);
       margin: 50px 0;
@@ -71,11 +73,12 @@ section {
       gap: 20px;
       padding: 100px 20px;
       border-radius: 12px;
+      margin-bottom: 50px;
       .todoItem {
         opacity: 0%;
         position: relative;
         width: 80%;
-        height: 60px;
+        min-height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -110,7 +113,10 @@ section {
             }
           }
           .todoItem-text {
-            font-size: 1.1rem;
+            padding: 5px;
+            flex-grow: 1; /* Permite que el contenido crezca si es necesario */
+            overflow: auto; /* Agrega una barra de desplazamiento si el contenido es demasiado grande */
+            word-wrap: break-word;
           }
           .todoItem-text_completed {
             text-decoration: line-through;
@@ -167,8 +173,97 @@ section {
     }
   }
 }
-
-
+#modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+  .ModalContainer {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--black-background);
+    form {
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      label {
+        color: var(--white);
+        font-size: 2rem;
+      }
+      textarea {
+        width: 100%;
+        height: 300px;
+        padding: 20px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        border: none;
+        resize: none;
+        outline: var(--gray) 2px solid;
+        outline-offset: 4px;
+        &:focus {
+          outline: var(--green) 2px solid;
+          outline-offset: 4px;
+        }
+      }
+      .buttonContainer {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 50px;
+        button {
+          width: 150px;
+          padding: 15px 0;
+          border-radius: 12px;
+          font-size: 1rem;
+          background-color: transparent;
+          cursor: pointer;
+          transition: .2s ease-in;
+          outline-offset: 2px;
+        }
+        .button-cancel{
+          border: solid var(--white) 2px;
+          color: var(--white);
+          &:hover {
+            border: var(--red);
+            background-color: var(--red);
+          }
+          &:focus {
+            outline: var(--red) 2px solid;
+            border: var(--red);
+            background-color: var(--red);
+          }
+          &:active {
+            outline: var(--red) 2px solid;
+            transition: 0s ease-in;
+          }
+        }
+        .button-create {
+          border: solid var(--green) 2px;
+          color: var(--green);
+          &:hover {
+            background-color: var(--green);
+            color: var(--white);
+          }
+          &:focus {
+            outline: var(--green) 2px solid;
+            background-color: var(--green);
+            color: var(--white);
+          }     
+          &:active {
+            outline: var(--green) 2px solid;
+            transition: 0s ease-in;
+          }
+        }
+      }
+    }
+  }
+}
 .lds-ripple {
   display: inline-block;
   position: relative;
@@ -184,6 +279,10 @@ section {
   div:nth-child(2) {
     animation-delay: -0.5s;
   }
+}
+
+.none {
+  display: none;
 }
 
 @keyframes lds-ripple {

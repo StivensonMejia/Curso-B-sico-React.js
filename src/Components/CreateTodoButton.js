@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { TodoContext } from "../App/Context";
 
 function CreateTodoButton() {
+
+  const { 
+    setOpenModal,
+  } = React.useContext(TodoContext);
+
+
+  const onSubmit = () => {
+    setOpenModal(true);
+  };
+  
   return (
-    <button onClick={() => {
-      console.log("click");
-    }} >New to-do's</button>
+    <button 
+      onClick={onSubmit}
+    >New to-do's</button>
   )
 }
 
